@@ -113,6 +113,8 @@ function App() {
                     <TableCell align="right">Age</TableCell>
                     <TableCell align="right">Email</TableCell>
                     <TableCell align="right">Address</TableCell>
+                    <TableCell align="right">Lat</TableCell>
+                    <TableCell align="right">Lng</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -122,6 +124,8 @@ function App() {
                       <TableCell align="right">{employee.age}</TableCell>
                       <TableCell align="right">{employee.email}</TableCell>
                       <TableCell align="right">{employee.address}</TableCell>
+                      <TableCell align="right">{employee.lat}</TableCell>
+                      <TableCell align="right">{employee.lng}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

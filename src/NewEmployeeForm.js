@@ -1,6 +1,6 @@
 import { useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import { setDefaults } from "react-geocode";
+import { setDefaults, fromAddress } from "react-geocode";
 
 const NewEmployeeForm = (props) => {
   const [address, setAddress] = useState(null);
@@ -15,25 +15,22 @@ const NewEmployeeForm = (props) => {
     e.preventDefault();
 
     const fields = new FormData(e.target);
-
     const locationName = address["value"]["description"];
 
-    // fromAddress(locationName).then((response) => {
-    //   const { lat, lng } = response.results[0].geometry.location;
-    //   console.log("WEEEEEEEEE");
-    //   console.log(lat);
-    //   console.log(lng);
-    //   console.log(locationName);
-    // });
-
-    const newEmployee = {
-      name: fields.get("name"),
-      age: parseInt(fields.get("age")),
-      email: fields.get("email"),
-      address: locationName,
-    };
-    console.log(newEmployee);
-    props.onAddEmployee(newEmployee);
+    fromAddress(locationName).then((response) => {
+      const { lat, lng } = response.results[0].geometry.location;
+      const newEmployee = {
+        name: fields.get("name"),
+        age: parseInt(fields.get("age")),
+        email: fields.get("email"),
+        address: locationName,
+        lat: lat,
+        lng: lng,
+      };
+      console.log("JEAUEGBUQOG");
+      console.log(newEmployee);
+      props.onAddEmployee(newEmployee);
+    });
   };
 
   return (
