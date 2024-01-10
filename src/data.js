@@ -1,3 +1,5 @@
+// Hardcoded Data
+
 const data = [
   {
     name: "Henry",

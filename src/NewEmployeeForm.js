@@ -3,22 +3,29 @@ import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { setDefaults, fromAddress } from "react-geocode";
 
 const NewEmployeeForm = (props) => {
+  // Address retrieved from google api
   const [address, setAddress] = useState(null);
 
   setDefaults({
-    key: "AIzaSyD3xkg6XozaLVU1yNbQRkeH06cZx9Icp1w", // Your API key here.
-    language: "en", // Default language for responses.
-    region: "sg", // Default region for responses.
+    key: "AIzaSyD3xkg6XozaLVU1yNbQRkeH06cZx9Icp1w",
+    language: "en",
+    region: "sg",
   });
 
   const submitFormHandler = (e) => {
     e.preventDefault();
 
-    const fields = new FormData(e.target);
+    // Retrieve address name
     const locationName = address["value"]["description"];
 
+    const fields = new FormData(e.target);
+
     fromAddress(locationName).then((response) => {
+      // Retrieve lat and lng from user's address which can later be
+      // displayed on google maps with markers
       const { lat, lng } = response.results[0].geometry.location;
+
+      // Create new employee with respective fields
       const newEmployee = {
         name: fields.get("name"),
         age: parseInt(fields.get("age")),
@@ -27,8 +34,6 @@ const NewEmployeeForm = (props) => {
         lat: lat,
         lng: lng,
       };
-      console.log("JEAUEGBUQOG");
-      console.log(newEmployee);
       props.onAddEmployee(newEmployee);
     });
   };

@@ -1,17 +1,11 @@
 import "./App.css";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import initialData from "./data";
 import { useEffect, useState, createContext, useMemo } from "react";
 import NewEmployeeForm from "./NewEmployeeForm";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import Brightness4Icon from "@mui/icons-material/Brightness4";
-import Brightness7Icon from "@mui/icons-material/Brightness7";
+import DisplayTable from "./DisplayTable";
 
 const ColorModeContext = createContext({ toggleColorMode: () => {} });
 
@@ -23,7 +17,6 @@ function App() {
   const colorMode = useMemo(
     () => ({
       toggleColorMode: () => {
-        //setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
         const newMode = mode === "light" ? "dark" : "light";
         setMode(newMode);
         setThemeToLocalStorage(newMode);
@@ -55,8 +48,6 @@ function App() {
     });
 
     setShowForm(false);
-    console.log("aaaaaaaaaaaaaaa");
-    console.log(data);
   };
 
   const cancelShowFormHandler = () => {
@@ -64,14 +55,10 @@ function App() {
   };
 
   useEffect(() => {
-    // const fetchData = async () => {
-    //   setTimeout(() => {
-    //     setData(initialData);
-    //   }, 500);
-    // };
-
-    // fetchData();
+    // Initialise data
     setData(initialData);
+
+    // Get user's saved color theme
     const savedMode = localStorage.getItem("mode");
     if (savedMode) {
       setMode(savedMode);
@@ -96,40 +83,7 @@ function App() {
         <ColorModeContext.Provider value={colorMode}>
           <ThemeProvider theme={theme}>
             <TableContainer component={Paper}>
-              <Table aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <button onClick={colorMode.toggleColorMode} color="inherit">
-                      {theme.palette.mode} mode
-                      {theme.palette.mode === "dark" ? (
-                        <Brightness4Icon />
-                      ) : (
-                        <Brightness7Icon />
-                      )}
-                    </button>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Name</TableCell>
-                    <TableCell align="right">Age</TableCell>
-                    <TableCell align="right">Email</TableCell>
-                    <TableCell align="right">Address</TableCell>
-                    <TableCell align="right">Lat</TableCell>
-                    <TableCell align="right">Lng</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  {data.map((employee, index) => (
-                    <TableRow key={index}>
-                      <TableCell>{employee.name}</TableCell>
-                      <TableCell align="right">{employee.age}</TableCell>
-                      <TableCell align="right">{employee.email}</TableCell>
-                      <TableCell align="right">{employee.address}</TableCell>
-                      <TableCell align="right">{employee.lat}</TableCell>
-                      <TableCell align="right">{employee.lng}</TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+              <DisplayTable colorMode={colorMode} theme={theme} data={data} />
             </TableContainer>
           </ThemeProvider>
         </ColorModeContext.Provider>
