@@ -1,17 +1,6 @@
 import { useState } from "react";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
-import {
-  setKey,
-  setDefaults,
-  setLanguage,
-  setRegion,
-  fromAddress,
-  fromLatLng,
-  fromPlaceId,
-  setLocationType,
-  geocode,
-  RequestType,
-} from "react-geocode";
+import { setDefaults } from "react-geocode";
 
 const NewEmployeeForm = (props) => {
   const [address, setAddress] = useState(null);
