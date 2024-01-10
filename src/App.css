@@ -1,0 +1,45 @@
+.App {
+  display: grid;
+  place-items: center;
+}
+.mode {
+  background-color: aqua;
+}
+.table {
+  width: 50em;
+}
+
+.new-data {
+  display: grid;
+  place-items: center;
+  background-color: white;
+  border-radius: 10px;
+  width: 50em;
+  min-height: 2em;
+  border: 1px solid black;
+  margin: 2rem auto;
+  padding: 1em;
+}
+button {
+  cursor: pointer;
+}
+.new-data button {
+  font: inherit;
+  padding: 1em;
+  border-radius: 12px;
+  color: white;
+  background-color: #8b005d;
+  min-width: 10em;
+}
+input {
+  width: 100px;
+}
+input:invalid {
+  border: 2px solid red;
+}
+
+input:focus {
+  width: 200px;
+  transition: width 0.35s ease-in-out;
+  -webkit-transition: width 0.35s ease-in-out;
+}
