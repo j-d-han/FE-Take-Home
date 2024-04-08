@@ -1,7 +1,11 @@
 import { NavLink } from "react-router-dom";
 import classes from "./MainNavigation.module.css";
+import { useContext } from "react";
+import AuthContext from "../../auth-context";
 
 const MainNavigation = () => {
+  const ctx = useContext(AuthContext);
+
   return (
     <header className={classes.header}>
       <nav>
@@ -27,6 +31,11 @@ const MainNavigation = () => {
               Staff
             </NavLink>
           </li>
+          {ctx.isLoggedIn && (
+            <li>
+              <button onClick={ctx.onLogout}>Logout</button>
+            </li>
+          )}
         </ul>
       </nav>
     </header>

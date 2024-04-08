@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import MainNavigation from "../components/MainNavigation";
+import MainNavigation from "../components/MainHeader/MainNavigation";
 
 const ErrorPage = () => {
   return (
