@@ -1,93 +1,33 @@
 import "./App.css";
-import TableContainer from "@mui/material/TableContainer";
-import Paper from "@mui/material/Paper";
-import initialData from "./data";
 import { useEffect, useState, createContext, useMemo } from "react";
-import NewEmployeeForm from "./NewEmployeeForm";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import DisplayTable from "./DisplayTable";
-
-const ColorModeContext = createContext({ toggleColorMode: () => {} });
+import Staff from "./pages/Staff";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import ErrorPage from "./pages/Error";
+import HomePage from "./pages/Home";
+import RootLayout from "./pages/Root";
 
 function App() {
-  const [data, setData] = useState([]);
-  const [showForm, setShowForm] = useState(false);
-  const [mode, setMode] = useState("light");
-
-  const colorMode = useMemo(
-    () => ({
-      toggleColorMode: () => {
-        const newMode = mode === "light" ? "dark" : "light";
-        setMode(newMode);
-        setThemeToLocalStorage(newMode);
-      },
-    }),
-    [mode]
-  );
-
-  const setThemeToLocalStorage = (mode) => {
-    localStorage.setItem("mode", mode);
-  };
-
-  const theme = useMemo(
-    () =>
-      createTheme({
-        palette: {
-          mode,
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <RootLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        { index: true, element: <HomePage /> },
+        {
+          path: "/staff",
+          element: <Staff />,
         },
-      }),
-    [mode]
-  );
-  const showFormHandler = () => {
-    setShowForm(true);
-  };
+      ],
+    },
+  ]);
 
-  const addNewEmployeeHandler = (employee) => {
-    setData((prevData) => {
-      return [employee, ...data];
-    });
-
-    setShowForm(false);
-  };
-
-  const cancelShowFormHandler = () => {
-    setShowForm(false);
-  };
-
-  useEffect(() => {
-    // Initialise data
-    setData(initialData);
-
-    // Get user's saved color theme
-    const savedMode = localStorage.getItem("mode");
-    if (savedMode) {
-      setMode(savedMode);
-    }
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="App">
-      <div className="new-data">
-        {showForm ? (
-          <NewEmployeeForm
-            onCancel={cancelShowFormHandler}
-            onAddEmployee={addNewEmployeeHandler}
-          />
-        ) : (
-          <button type="submit" onClick={showFormHandler}>
-            Add New Employee
-          </button>
-        )}
-      </div>
-      <div className="table">
-        <ColorModeContext.Provider value={colorMode}>
-          <ThemeProvider theme={theme}>
-            <TableContainer component={Paper}>
-              <DisplayTable colorMode={colorMode} theme={theme} data={data} />
-            </TableContainer>
-          </ThemeProvider>
-        </ColorModeContext.Provider>
-      </div>
+      <RouterProvider router={router} />
     </div>
   );
 }
