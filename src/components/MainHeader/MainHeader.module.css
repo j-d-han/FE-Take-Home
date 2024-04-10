@@ -8,9 +8,20 @@
   justify-content: space-between;
   align-items: center;
   background: #741188;
-  padding: 0 2rem;
+  padding-left: 2rem;
 }
 
 .main-header h1 {
   color: white;
+}
+
+.main-header button {
+  margin-right: 3rem;
+  background-color: rgb(158, 50, 135);
+  padding: 0.75rem 2rem;
+}
+
+.main-header button:hover {
+  background-color: rgb(158, 50, 135);
+  text-decoration: underline;
 }

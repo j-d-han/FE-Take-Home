@@ -14,7 +14,7 @@ const MainNavigation = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive && ctx.isLoggedIn ? classes.active : undefined
               }
               end
             >
@@ -25,17 +25,17 @@ const MainNavigation = () => {
             <NavLink
               to="/staff"
               className={({ isActive }) =>
-                isActive ? classes.active : undefined
+                isActive && ctx.isLoggedIn ? classes.active : undefined
               }
             >
               Staff
             </NavLink>
           </li>
-          {ctx.isLoggedIn && (
+          {/* {ctx.isLoggedIn && (
             <li>
               <button onClick={ctx.onLogout}>Logout</button>
             </li>
-          )}
+          )} */}
         </ul>
       </nav>
     </header>
