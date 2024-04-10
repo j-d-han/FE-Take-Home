@@ -7,7 +7,7 @@ const Bio = () => {
   return (
     <Card>
       <div className="bio-header">
-        <img src={jd} alt="Image of Jun Ding" />
+        <img src={jd} alt="Jun Ding" />
         <h1>
           <b>Han Jun Ding</b>
         </h1>

@@ -1,5 +1,4 @@
 import "./App.css";
-import { useEffect } from "react";
 import Staff from "./pages/Staff";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/Error";
@@ -21,8 +20,6 @@ function App() {
       ],
     },
   ]);
-
-  useEffect(() => {}, []);
 
   return (
     <div className="App">
