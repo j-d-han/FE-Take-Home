@@ -2,3 +2,16 @@
   display: grid;
   place-items: center;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Quicksand", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* background-color: #2d2834; */
+  /* background: radial-gradient(#27212e, #221530); */
+  background: radial-gradient(#705f83, #42295d);
+  color: #ab81e3;
+}
