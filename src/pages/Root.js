@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
-import MainNavigation from "../components/MainHeader/MainNavigation";
 import MainHeader from "../components/MainHeader/MainHeader";
-import { useEffect, useState, createContext, useMemo, useContext } from "react";
+import { useContext } from "react";
 import AuthContext from "../auth-context";
 import Login from "../components/Login/Login";
 
