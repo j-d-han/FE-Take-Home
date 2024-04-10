@@ -1,17 +1,11 @@
 import "./App.css";
-import { useEffect, useState, createContext, useMemo, useContext } from "react";
 import Staff from "./pages/Staff";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./pages/Error";
 import HomePage from "./pages/Home";
 import RootLayout from "./pages/Root";
-import AuthContext from "./auth-context";
-import Login from "./components/Login/Login";
-import MainHeader from "./components/MainHeader/MainHeader";
 
 function App() {
-  const ctx = useContext(AuthContext);
-
   const router = createBrowserRouter([
     {
       path: "/",
@@ -26,8 +20,6 @@ function App() {
       ],
     },
   ]);
-
-  useEffect(() => {}, []);
 
   return (
     <div className="App">
