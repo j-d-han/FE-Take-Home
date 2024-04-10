@@ -7,10 +7,16 @@ import AuthContext from "../../auth-context";
 
 const emailReducer = (state, action) => {
   if (action.type === "USER_INPUT") {
-    return { value: action.val, isValid: action.val.includes("@") };
+    return {
+      value: action.val,
+      isValid: action.val.includes("@") && action.val.includes(".com"),
+    };
   }
   if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.includes("@") };
+    return {
+      value: state.value,
+      isValid: state.value.includes("@") && state.value.includes(".com"),
+    };
   }
   return { value: "", isValid: false };
 };
@@ -108,6 +114,7 @@ const Login = (props) => {
             value={emailState.value}
             onChange={emailChangeHandler}
             onBlur={validateEmailHandler}
+            placeholder="Try: test@test.com"
           />
         </div>
         <div
@@ -122,6 +129,7 @@ const Login = (props) => {
             value={passwordState.value}
             onChange={passwordChangeHandler}
             onBlur={validatePasswordHandler}
+            placeholder="Min 7 characters"
           />
         </div>
         <div className={classes.actions}>

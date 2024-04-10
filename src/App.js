@@ -23,9 +23,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* {ctx.isLoggedIn && <MainHeader />} */}
-      {/* {!ctx.isLoggedIn && <Login />}
-      {ctx.isLoggedIn && <RouterProvider router={router} />} */}
       <RouterProvider router={router} />
     </div>
   );
