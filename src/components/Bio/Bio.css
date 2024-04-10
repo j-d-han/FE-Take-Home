@@ -1,0 +1,24 @@
+/* header {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 3rem;
+  text-align: center;
+} */
+
+.bio-header img {
+  width: 20rem;
+  border-radius: 50%;
+  border: 2px solid black;
+}
+
+.bio-header h1 {
+  margin: 1;
+  font-size: 1.5rem;
+}
+
+.bio-header p {
+  margin: 0;
+}
