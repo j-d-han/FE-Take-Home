@@ -34,11 +34,37 @@ const Home = () => {
     <>
       <h1>Welcome to My Home Page!</h1>
       <Bio />
+      <h1>Characteristics</h1>
       <ul id="characteristic">
         <Characteristic trait={characteristics[0]} />
         <Characteristic trait={characteristics[1]} />
         <Characteristic trait={characteristics[2]} />
       </ul>
+      <h2>Contact Me</h2>
+      <h3 style={{ margin: 0 }}>Mobile: +65 8468 0338 </h3>
+      <h3 style={{ margin: 0 }}>Email: junding98@gmail.com</h3>
+      <h3 style={{ margin: 0 }}>
+        Github:{" "}
+        <a
+          style={{ color: "white" }}
+          href="https://github.com/j-d-han"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://github.com/j-d-han
+        </a>
+      </h3>
+      <h3 style={{ margin: 0 }}>
+        LinkedIn:{" "}
+        <a
+          style={{ color: "white" }}
+          href="https://www.linkedin.com/in/jun-ding-han/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          https://www.linkedin.com/in/jun-ding-han/
+        </a>
+      </h3>
     </>
   );
 };

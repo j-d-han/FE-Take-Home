@@ -7,18 +7,37 @@
   margin-bottom: 3rem;
   text-align: center;
 } */
-
-.bio-header img {
-  width: 20rem;
+.bio {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  background: #250358;
+  display: flex;
+  margin: 0 auto;
+  width: 80%;
+}
+.bio img {
+  width: 15rem;
   border-radius: 50%;
   border: 2px solid black;
+  display: flex;
+  max-width: 15rem;
+  object-fit: cover;
 }
 
-.bio-header h1 {
+.bio-info {
+  flex: 1; /* Allow text area to grow horizontally */
+  margin: 2rem;
+}
+
+.bio-info h1 {
   margin: 1;
   font-size: 1.5rem;
+  display: flex;
 }
 
-.bio-header p {
+.bio-info p {
   margin: 0;
+  text-align: left;
 }
