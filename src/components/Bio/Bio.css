@@ -16,12 +16,13 @@
   display: flex;
   margin: 0 auto;
   width: 80%;
+  align-items: center;
 }
 .bio img {
   width: 15rem;
   border-radius: 50%;
   border: 2px solid black;
-  display: flex;
+  /* display: flex; */
   max-width: 15rem;
   object-fit: cover;
 }
@@ -40,4 +41,18 @@
 .bio-info p {
   margin: 0;
   text-align: left;
+}
+
+@media (max-width: 768px) {
+  .bio {
+    flex-direction: column; /* Stack elements vertically on small screens */
+  }
+
+  .bio img {
+    margin-right: 0; /* Remove margin on small screens */
+  }
+
+  .bio-info {
+    margin-top: 10px; /* Add space between picture and text on small screens */
+  }
 }
